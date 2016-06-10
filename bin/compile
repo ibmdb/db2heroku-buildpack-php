@@ -31,7 +31,7 @@ function download_and_install_ibm_db() {
 
   # Extracting and Cleaning DS Driver
   rm -rf clidriver
-  tar -xzf db2_driver_for_odbc_cli.tar.gz
+  tar -xzf linuxx64_odbc_cli.tar.gz
 
   echo "Downloading autoconf..."
   curl -LO http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
@@ -113,7 +113,7 @@ CACHED_DIRS="ibmdb2"
 for dir in $CACHED_DIRS; do
   cp -R $CACHE_DIR/$dir/* . &> /dev/null || true
 done
-
+rm -rf clidriver/lib/libdb2.so
 if [ -f clidriver/lib/libdb2.so ]; then
   # we have from cache, just restore php's db2.so
   echo "-------> restoring ibm_db2 from cache"
